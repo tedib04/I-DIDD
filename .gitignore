@@ -1,0 +1,44 @@
+# IntelliJ project files
+../.idea
+*.iml
+out/
+gen
+.idea/
+
+# PyCharm
+__pycache__
+
+# macOS
+**/.DS_Store
+
+# Virtualenv
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+
+# Environmental variables
+.env
+
+# Streamlit
+.streamlit/
+
+# Backup files
+*.bkp
+
+# Discovered Models
+frontend/src/declare_model.png
+
+# Experiments results
+experiments/data/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+/flink-1.18.1-bin-scala_2.12.tgz
+/processor.zip

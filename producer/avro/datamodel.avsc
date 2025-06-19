@@ -1,0 +1,27 @@
+{
+  "namespace": "project",
+  "type": "record",
+  "name": "Event",
+  "fields": [
+    {
+      "name": "case_concept_name",
+      "type": "string"
+    },
+    {
+      "name": "concept_name",
+      "type": "string"
+    },
+    {
+      "name": "time_timestamp",
+      "type": "string"
+    },
+    {
+      "name": "eventAttributes",
+      "type": {
+        "type": "map",
+        "values": "string"
+      },
+      "default": {}
+    }
+  ]
+}

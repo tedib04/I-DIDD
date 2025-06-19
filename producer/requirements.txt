@@ -1,0 +1,9 @@
+confluent_kafka==2.10.0
+pm4py==2.7.15.2
+fastavro==1.9.2
+requests==2.32.3
+python-dotenv==1.1.0
+httpx==0.28.1
+attrs==25.3.0
+cachetools==5.5.2
+authlib==1.6.0
