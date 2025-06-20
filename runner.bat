@@ -10,7 +10,7 @@ if exist .env (
 )
 
 REM Set default ports if not defined in .env
-if "%PORT_FRONTEND%"=="" set PORT_FRONTEND=3000
+if "%PORT_FRONTEND%"=="" set PORT_FRONTEND=8888
 if "%PORT_FLINK%"=="" set PORT_FLINK=8081
 if "%PORT_KAFKA_UI%"=="" set PORT_KAFKA_UI=8080
 
