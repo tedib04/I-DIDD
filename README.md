@@ -19,7 +19,7 @@ This repository contains all the materials related to the implementation of *ODD
 ```bash
   $  git clone git@github.com:tedib04/ODADD.git
   $  cd ODADD/
-  $  cp .env.example .env
+  $  cp .env.example .env (copy .env.example .env for Windows)
 ```
 
 3. Install _Lydia_ backend using Docker:
@@ -41,7 +41,7 @@ More information about the installation can be found [here](https://github.com/w
 
 4. Run the application using the following command:
 ```bash
-  $  /.runner.sh
+  $  ./runner.sh
 ```
 
 Once all the previous command are performed correctly, a web interface displaying the process data will be shown to you. This interface is continuously updated with the newly available analytics, as new processes are executed. 

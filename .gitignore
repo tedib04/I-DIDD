@@ -25,20 +25,9 @@ pyvenv.cfg
 # Environmental variables
 .env
 
-# Streamlit
-.streamlit/
-
-# Backup files
-*.bkp
-
 # Discovered Models
 frontend/src/declare_model.png
-
-# Experiments results
-experiments/data/
 
 # Jupyter Notebook
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
-/flink-1.18.1-bin-scala_2.12.tgz
-/processor.zip
