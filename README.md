@@ -62,11 +62,11 @@ The architecture of this project consist of the following components:
 * `Web frontend` - Displays the latest process analytics, and it is accessible at  http://localhost:8888/.
 
 ## Repository Structure
-
+- `assets:` Contains the pictures of the _easyDeclare_ patterns.
+- `experiments:` Contains the experiments utils and results.
+- `frontend:` Contains the implementation of the application's frontend.
 - `producer:` Contains the code responsible for replaying event streams from a given event log.
 - `processor:` Contains the code that processes the initial dataset by performing various analyses and producing the results to a Kafka topic, from which they are read by the frontend server.
-- `frontend:` Contains the implementation of the application's frontend.
-- `experiments:` Contains the experiments utils and results.
 
 ## License
 The code for this application is distributed under the MIT license, please check the [**LICENSE**](../Thesis/LICENSE) file for more information.
