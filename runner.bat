@@ -1,102 +1,101 @@
 @echo off
+REM === Setup ===
 setlocal enabledelayedexpansion
 
-REM Verify Python 3.10 exists
-py -3.10 --version >nul 2>&1
-if errorlevel 1 (
-    echo Python 3.10 not found. Install Python 3.10 first.
-    pause
-    exit /b 1
-)
-
-REM Load environment variables from .env
+REM Load environment variables from .env (basic support)
 if exist .env (
     for /f "usebackq tokens=1,* delims==" %%i in (".env") do (
         set %%i=%%j
     )
 )
 
-REM Set default ports if not defined
-if "%PORT_FRONTEND%"=="" set PORT_FRONTEND=8888
+REM Set default ports if not defined in .env
+if "%PORT_FRONTEND%"=="" set PORT_FRONTEND=3000
 if "%PORT_FLINK%"=="" set PORT_FLINK=8081
 if "%PORT_KAFKA_UI%"=="" set PORT_KAFKA_UI=8080
 
-REM Create virtual environment explicitly with Python 3.10
+REM === Create virtual environment ===
 if not exist .venv (
-    echo Creating Python 3.10 virtual environment...
+    echo Creating Python 3.10 virtual environment in .venv...
     py -3.10 -m venv .venv
 ) else (
-    echo Using existing Python 3.10 virtual environment...
+    echo Using existing Python 3.10 virtual environment in .venv...
 )
 
-REM Activate virtual environment
+REM === Activate virtual environment ===
 call .venv\Scripts\activate.bat
 
-REM Upgrade pip first
-python -m pip install --upgrade pip setuptools wheel
-
-REM Install dependencies explicitly
-echo Installing dependencies...
+REM === Install Python dependencies ===
+echo Installing Python dependencies...
 pip install -r requirements.txt
 pip install --no-deps -r requirements-pydot.txt
 
-REM Remove old files
+REM === Remove old files ===
 set SCRIPT_DIR=%cd%
-set DECLARE_MODEL_PATH=%SCRIPT_DIR%\frontend\src\declare_model.png
-if exist "%DECLARE_MODEL_PATH%" (
+set declare_model_path=%SCRIPT_DIR%\frontend\src\declare_model.png
+if exist "%declare_model_path%" (
     echo Removing old declare_model.png...
-    del /f "%DECLARE_MODEL_PATH%"
+    del /f "%declare_model_path%"
 )
 
-set RULES_PATH=%SCRIPT_DIR%\processor\src\rules\rules.json
-if exist "%RULES_PATH%" (
+set rules_path=%SCRIPT_DIR%\processor\src\rules\rules.json
+if exist "%rules_path%" (
     echo Removing old rules.json...
-    del /f "%RULES_PATH%"
+    del /f "%rules_path%"
 )
 
-REM Kill processes using ports
+REM === Kill processes using ports ===
 for %%P in (%PORT_FRONTEND% %PORT_FLINK% %PORT_KAFKA_UI%) do (
-    echo Checking processes on port %%P...
+    echo Checking for process using port %%P...
     for /f "tokens=5" %%a in ('netstat -ano ^| findstr :%%P') do (
+        echo Killing PID %%a on port %%P...
         taskkill /PID %%a /F >nul 2>&1
     )
 )
 
-REM Restart Docker Compose
+REM === Docker Compose restart ===
+echo Stopping and removing containers from previous run...
 docker compose down -v --remove-orphans
+
+echo Starting Docker Compose services...
 docker compose up -d
 
-REM Wait for frontend port
+REM === Wait for services to be up ===
+echo Waiting for frontend and Kafka UI ports...
+
 :wait_for_frontend
-powershell -Command "exit !(Test-NetConnection localhost -Port %PORT_FRONTEND%).TcpTestSucceeded"
+powershell -Command "try { (New-Object Net.Sockets.TcpClient('localhost', %PORT_FRONTEND%)).Close(); exit 0 } catch { exit 1 }"
 if errorlevel 1 (
     timeout /t 1 >nul
     goto wait_for_frontend
 )
 
-REM Wait for Kafka UI port
 :wait_for_kafka
-powershell -Command "exit !(Test-NetConnection localhost -Port %PORT_KAFKA_UI%).TcpTestSucceeded"
+powershell -Command "try { (New-Object Net.Sockets.TcpClient('localhost', %PORT_KAFKA_UI%)).Close(); exit 0 } catch { exit 1 }"
 if errorlevel 1 (
     timeout /t 1 >nul
     goto wait_for_kafka
 )
 
-REM Open UI services
+REM === Open browser for services ===
+echo Opening service UIs...
 start "" http://localhost:%PORT_FRONTEND%
 start "" http://localhost:%PORT_KAFKA_UI%
 
-REM Run processor module
+REM === Start processor module ===
+echo Running processor module...
 start /B cmd /c "python -m processor.src.main"
 
-REM Wait for Flink UI, then open
+REM === Wait for Flink UI, then open ===
 :wait_for_flink
-powershell -Command "exit !(Test-NetConnection localhost -Port %PORT_FLINK%).TcpTestSucceeded"
+powershell -Command "try { (New-Object Net.Sockets.TcpClient('localhost', %PORT_FLINK%)).Close(); exit 0 } catch { exit 1 }"
 if errorlevel 1 (
     timeout /t 1 >nul
     goto wait_for_flink
 )
+echo Flink UI is up. Opening in browser...
 start "" http://localhost:%PORT_FLINK%
 
+REM === Done ===
 echo All services started successfully.
-pause
+exit /b
