@@ -17,7 +17,7 @@ This repository contains all the materials related to the implementation of *ODD
 2. Clone this repository and copy `.env.example` into `.env`, possibly editing it (just creating `.env` is enough). Please note that here must be specified the _tagged event log_ that should be used to perform model discovery.
 
 ```bash
-  $  git clone git@github.com:tedib04/ODADD.git
+  $  git clone https://github.com/tedib04/ODADD.git
   $  cd ODADD/
 ```
 
