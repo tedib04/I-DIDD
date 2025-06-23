@@ -1,4 +1,4 @@
-## _I-DIDD_: A Tool for Real-Time Discovery of Data-Aware DECLARE Process Models
+## _I-DIDD_: A Tool for the Incremental Discovery of Data-Aware Declare Models
 
 **Authors**: Tedi Ibershimi (Free University of Bozen-Bolzano), Fabrizio Maria Maggi (Free University of Bozen-Bolzano), Marco Comuzzi (Ulsan National Institute of Science and Technology)
 
