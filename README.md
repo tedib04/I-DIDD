@@ -1,4 +1,4 @@
-## _ODADD_: A Tool for Real-Time Discovery of Data-Aware DECLARE Process Models
+## _I-DIDD_: A Tool for Real-Time Discovery of Data-Aware DECLARE Process Models
 
 **Authors**: Tedi Ibershimi (Free University of Bozen-Bolzano), Fabrizio Maria Maggi (Free University of Bozen-Bolzano), Marco Comuzzi (Ulsan National Institute of Science and Technology)
 
@@ -10,15 +10,15 @@
   - [License](#license)
 
 ## Overview
-This repository contains all the materials related to the implementation of *ODDAD*, the first and only tool that fully supports the discovery of Data-Aware DECLARE Process Models from event logs, using an approach based on *Typed Automata*.
+This repository contains all the materials related to the implementation of *I-DIDD*, the first and only tool that fully supports the discovery of Data-Aware DECLARE Process Models from event logs, using an approach based on *Typed Automata*.
 
 ## Installation
 1. Ensure [_Docker_](https://www.docker.com/get-started/), [_Python 3.10_](https://www.python.org/downloads/) and _JAVA 11_ is installed on your machine.
 2. Clone this repository and copy `.env.example` into `.env`, possibly editing it (just creating `.env` is enough). Please note that here must be specified the _tagged event log_ that should be used to perform model discovery.
 
 ```bash
-  $  git clone https://github.com/tedib04/ODADD.git
-  $  cd ODADD/
+  $  git clone https://github.com/tedib04/I-DIDD.git
+  $  cd I-DIDD/
 ```
 
 On Linux/macOS:
