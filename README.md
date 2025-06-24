@@ -14,14 +14,16 @@ This repository contains all the materials related to the implementation of *I-D
 
 ## Installation
 1. Ensure [_Docker_](https://www.docker.com/get-started/), [_Python 3.10_](https://www.python.org/downloads/) and _JAVA 11_ is installed on your machine.
-2. Clone this repository and copy `.env.example` into `.env`, possibly editing it (just creating `.env` is enough). Please note that here must be specified the _tagged event log_ that should be used to perform model discovery.
+2. Clone this repository.
 
 ```bash
   $  git clone https://github.com/tedib04/I-DIDD.git
   $  cd I-DIDD/
 ```
 
-On Linux/macOS:
+3. Copy `.env.example` into `.env` . In this file you can configure the ports of the running processes as well as the event log file to use. By default, the demo is preconfigured to use the event log specified in this file. The event log must be located under `experiments/data/tagged/` and must be "tagged" before use by running the script found in `experiments/src`.
+
+On Linux/macOS, use the following command:
 
 ```bash
   $  cp .env.example .env
@@ -33,7 +35,7 @@ On Windows:
 ```
 
 
-3. Install _Lydia_ backend using Docker:
+4. Install _Lydia_ backend using Docker:
 
 Download the Lydia Docker image:
 
@@ -56,7 +58,7 @@ On Windows machines, make a `.bat` file and add it to your PATH variable:
 
 More information about the installation of _Lydia_ can be found [here](https://github.com/whitemech/logaut).
 
-4. Run the application:
+5. Run the application:
 
 On Linux/macOS:
 ```bash
