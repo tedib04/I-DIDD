@@ -10,10 +10,10 @@
   - [License](#license)
 
 ## Overview
-This repository contains all the materials related to the implementation of *I-DIDD*, the first and only tool that fully supports the discovery of Data-Aware DECLARE Process Models from event logs, using an approach based on *Typed Automata*.
+This repository contains all the materials related to the implementation of *I-DIDD*, the first and only tool that fully supports the incremental discovery of Data-Aware DECLARE Process Models from event logs.
 
 ## Installation
-1. Ensure [_Docker_](https://www.docker.com/get-started/), [_Python 3.10_](https://www.python.org/downloads/) and _JAVA 11_ is installed on your machine.
+1. Ensure [_Docker_](https://www.docker.com/get-started/), [_Python 3.10_](https://www.python.org/downloads/), _JAVA 11_ and [_Graphviz_](https://graphviz.org/download) is installed on your machine.
 2. Clone this repository.
 
 ```bash
@@ -21,7 +21,8 @@ This repository contains all the materials related to the implementation of *I-D
   $  cd I-DIDD/
 ```
 
-3. Copy `.env.example` into `.env` . In this file you can configure the ports of the running processes as well as the event log file to use. By default, the demo is preconfigured to use the event log specified in this file. The event log must be located under `experiments/data/tagged/` and must be "tagged" before use by running the script found in `experiments/src`.
+3. Copy `.env.example` into `.env` . In this file you can configure the ports of the running processes as well as the event log file to use for the discovery. By default, the demo is preconfigured to use the event log specified in this file. The event log must be located under `experiments/data/tagged/` and must be _tagged_ before use by running the script found in `experiments/src/`. Tagging is required to add an attribute to each event indicating whether it is the last event in a trace. This information is essential for the discovery process to function correctly.
+
 
 On Linux/macOS, use the following command:
 
