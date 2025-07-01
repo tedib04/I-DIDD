@@ -1,4 +1,4 @@
-## _I-DIDD_: A Tool for the Incremental Discovery of Data-Aware Declare Models
+## _I-DiDD_: A Tool for the Incremental Discovery of Data-Aware Declare Models
 
 **Authors**: Tedi Ibershimi (Free University of Bozen-Bolzano), Fabrizio Maria Maggi (Free University of Bozen-Bolzano), Marco Comuzzi (Ulsan National Institute of Science and Technology)
 
@@ -10,7 +10,7 @@
   - [License](#license)
 
 ## Overview
-This repository contains all the materials related to the implementation of *I-DIDD*, the first and only tool that fully supports the incremental discovery of Data-Aware DECLARE Process Models from event logs.
+This repository contains all the materials related to the implementation of *I-DiDD*, the first and only tool that fully supports the incremental discovery of Data-Aware DECLARE Process Models from event logs.
 
 ## Installation
 1. Ensure [_Docker_](https://www.docker.com/get-started/), [_Python 3.10_](https://www.python.org/downloads/), _JAVA 11_ and [_Graphviz_](https://graphviz.org/download) is installed on your machine.
