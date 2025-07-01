@@ -21,8 +21,8 @@ class ProcessDashboardApp:
 
     def run(self):
         # Set up Streamlit page configuration
-        set_page_config(page_title='Process Dashboard', layout='wide', initial_sidebar_state='expanded')
-        title('PROCESS MINING DASHBOARD')
+        set_page_config(page_title='I-DiDD Dashboard', layout='wide', initial_sidebar_state='expanded')
+        title('I-DiDD Dashboard')
         markdown(style_sheet, unsafe_allow_html=True)
 
         # Get data provider
